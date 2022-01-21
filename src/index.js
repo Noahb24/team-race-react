@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import { store } from './store';
 import { Provider } from 'react-redux';
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter} from "react-router-dom";
 
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <App />
-      </ HashRouter>
+      </ BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
