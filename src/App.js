@@ -17,11 +17,11 @@ function App() {
         </Row>
         <Row className='body'>
             <Routes>
-              <Route path="team-race-react/" element={<Home />} />
-              <Route path="team-race-react/history" />
-              <Route path="team-race-react/leaderboard" />
-              <Route path="team-race-react/book" />
-              <Route path="team-race-react/pictures" />
+              <Route path="/" element={<Home />} />
+              <Route path="/history" />
+              <Route path="/leaderboard" />
+              <Route path="/book" />
+              <Route path="/pictures" />
             </Routes>
         </Row>
       </Container>
