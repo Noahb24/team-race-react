@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { addPostsFromServer, clearNewPost, selectNewPost, selectPostModal, selectPosts, startPostModal, stopPostModal, updateNewPost } from './homeSlice'
 
+const url = process.env.STATUS === 'production' ? 'https://team-race-react.vercel.app/api' : "http://localhost:5000"
+
 const Home = () => {
   const dispatch = useDispatch()
   const posts = useSelector(selectPosts)
@@ -14,7 +16,8 @@ const Home = () => {
   const newPost = useSelector(selectNewPost)
 
   const fetchPosts = () => {
-    axios.get(`http://localhost:5000/api/posts/queryposts`)
+    console.log(`${url}/posts/queryposts`)
+    axios.get(`${url}/posts/queryposts`)
     .then(res => {
       dispatch(addPostsFromServer(res.data ))
     })
@@ -36,7 +39,7 @@ const Home = () => {
   }
 
   const handleNewPostSumbit = async () => {
-    await axios.post(`http://localhost:5000/api/posts/newPost`, {
+    await axios.post(`${url}/posts/newPost`, {
       name: newPost.name,
       content: newPost.content
     })

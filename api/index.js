@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 
-require("dotenv").config({ path: "./config.env" });
+require("dotenv").config({path: '../config.env'});
+
 const port = process.env.PORT || 5000;
 
 const postRouter = require('./routes/posts')
 
 app.use(cors({
-  origin:  ["http://localhost:3000, https://team-race-react.vercel.app/"],
+  origin:  ["http://localhost:3000", "https://team-race-react.vercel.app/"],
   credentials: true,
   methods:['GET', 'PUT','POST'],
   allowedHeaders: 'Content-Type,Authorization,cookie',
