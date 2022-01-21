@@ -18,10 +18,10 @@ function App() {
         <Row className='body'>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/history" />
-              <Route path="/leaderboard" />
-              <Route path="/book" />
-              <Route path="/pictures" />
+              <Route path="/#/history" />
+              <Route path="/#/leaderboard" />
+              <Route path="/#/book" />
+              <Route path="/#/pictures" />
             </Routes>
         </Row>
       </Container>

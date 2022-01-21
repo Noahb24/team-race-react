@@ -15,10 +15,10 @@ const Header = () => {
                     <Offcanvas.Body>
                         <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/history">History</Nav.Link>
-                            <Nav.Link href="/leaderboard">Leader Board</Nav.Link>
-                            <Nav.Link href="/book">Kris's Fun Facts</Nav.Link>
-                            <Nav.Link href="/pictures">Pictures</Nav.Link>
+                            <Nav.Link href="/#/history">History</Nav.Link>
+                            <Nav.Link href="/#/leaderboard">Leader Board</Nav.Link>
+                            <Nav.Link href="/#/book">Kris's Fun Facts</Nav.Link>
+                            <Nav.Link href="/#/pictures">Pictures</Nav.Link>
                         </Nav>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>

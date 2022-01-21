@@ -10,7 +10,7 @@ import { HashRouter } from "react-router-dom";
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <HashRouter basename='team-race-react'>
+      <HashRouter>
         <App />
       </ HashRouter>
     </Provider>
