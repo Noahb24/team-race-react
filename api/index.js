@@ -8,7 +8,7 @@ const port = process.env.PORT || 5000;
 const postRouter = require('./routes/posts')
 
 app.use(cors({
-  origin:  ["http://localhost:3000"],
+  origin:  ["http://localhost:3000, https://team-race-react.vercel.app/"],
   credentials: true,
   methods:['GET', 'PUT','POST'],
   allowedHeaders: 'Content-Type,Authorization,cookie',
@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 
 
-app.use("/api/posts", postRouter);
+app.use("/posts", postRouter);
 
 // get driver connection
 const dbo = require("./db/conn");
