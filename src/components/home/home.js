@@ -4,10 +4,11 @@ import bikes from '../../media/uptonBikes.jpeg'
 import './home.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { addPostsFromServer, clearNewPost, selectNewPost, selectPostModal, selectPosts, startPostModal, stopPostModal, updateNewPost } from './homeSlice'
 
-const url = process.env.STATUS === 'production' ? 'https://team-race-server.vercel.app' : "http://localhost:5000"
+require("dotenv").config();
+
+const url = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : 'https://team-race-server.vercel.app'
 
 const Home = () => {
   const dispatch = useDispatch()
