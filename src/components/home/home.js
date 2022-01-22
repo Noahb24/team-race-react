@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { addPostsFromServer, clearNewPost, selectNewPost, selectPostModal, selectPosts, startPostModal, stopPostModal, updateNewPost } from './homeSlice'
 
-const url = process.env.STATUS === 'production' ? 'https://team-race-react.vercel.app/api' : "http://localhost:5000"
+const url = process.env.STATUS === 'production' ? 'https://team-race-server.vercel.app' : "http://localhost:5000"
 
 const Home = () => {
   const dispatch = useDispatch()
