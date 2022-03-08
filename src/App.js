@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from './components/header/header'
 import Home from './components/home/home';
+import TeamGen from './components/teamGen/teamMaker'
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
               <Route path="/leaderboard" />
               <Route path="/book" />
               <Route path="/pictures" />
+              <Route path='/teamgenerator' element={<TeamGen />}/>
             </Routes>
         </Row>
       </Container>

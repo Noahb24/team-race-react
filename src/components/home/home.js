@@ -17,7 +17,6 @@ const Home = () => {
   const newPost = useSelector(selectNewPost)
 
   const fetchPosts = () => {
-    console.log(`${url}/posts/queryposts`)
     axios.get(`${url}/posts/queryposts`)
     .then(res => {
       dispatch(addPostsFromServer(res.data ))
@@ -61,10 +60,14 @@ const Home = () => {
   }, [])
 
   return (
-        <Stack className='fullHeight'>
+      <Stack direction='horizontal'>
+          <Stack>
+
+          </Stack>
+          <Stack className='fullHeight ms-auto vw-50' >
             <Image className='homeImage' src={bikes} id='gallery'/>
             <div id='feed'>
-              <h1 className='centerTextBox' id='feedHeader'>Team Race Feed</h1>
+              <h1 className='centerTextBox' id='feedHeader'>Team Race Shat</h1>
               <Button onClick={() => startModal()} size='sm' id='newPostButton'>New Post</Button>
               <div id='feedPosts'>
                 {
@@ -102,10 +105,11 @@ const Home = () => {
                   </Modal.Footer>
                 </Modal>
             </div>
-            
-            
-           
-        </Stack>
+          </Stack>
+          <Stack className=''>
+
+          </Stack>
+      </Stack>
   )
 }
 

@@ -19,6 +19,7 @@ const Header = () => {
                             <Nav.Link href="/leaderboard">Leader Board</Nav.Link>
                             <Nav.Link href="/book">Kris's Fun Facts</Nav.Link>
                             <Nav.Link href="/pictures">Pictures</Nav.Link>
+                            <Nav.Link href="teamgenerator">Team Generator</Nav.Link>
                         </Nav>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>

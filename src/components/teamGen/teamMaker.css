@@ -1,0 +1,30 @@
+
+    .teamMaker{
+        overflow: scroll;
+        height: 810px;
+        width: 375px;
+    }
+    
+    #teamSize{
+        width: 4rem
+    }
+    button {
+        margin: 5px;
+    }
+
+    .header label {
+        margin: 5px;
+    }
+
+    .racers #time {
+        width: 3.5rem
+    }
+
+    .racers #name{
+        width: 7rem
+    }
+
+    .racer {
+        border: 1px solid black;
+        border-radius: 10px;
+    }
