@@ -5,7 +5,9 @@ const initialState = {
     racers: [
         {
         name: '',
-        time: '00:00.00',
+        minute: 0,
+        second: 0,
+        ms: 0,
         id: 0}
     ],
     teams: []
@@ -21,7 +23,9 @@ export const teamGenSlice = createSlice ({
         addRacer: (state, action) => {
             state.racers.push({
                 name: "",
-                time: '00:00.00',
+                minute: 0,
+                second: 0,
+                ms: 0,
                 id: state.racers.length
             })
         },

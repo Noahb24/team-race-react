@@ -10,7 +10,7 @@
     {id: 7, time:'14:25.68'},
     {id: 8, time:'15:24.15'}
 ]*/
-
+/* creates all possible racer combos with a given team size and retrun an array of the combos*/
 function k_combinations(set, k) {
 	var i, j, combs, head, tailcombs;
 	if (k > set.length || k <= 0) {
@@ -37,38 +37,39 @@ function k_combinations(set, k) {
 	}
 	return combs;
 }
+///////////////
 
+/* Converts racer object from redux to name and time in ms object */
 function tooMS (arr){
     let newArr = []
-    arr.map(time => {
-        const minute = Number(time.slice(0,2)) * 60000
-        const second = Number(time.slice(3,5)) * 1000
-        const milSec = Number(time.slice(6))
-        newArr.push(minute + second + milSec)
+    arr.map(racer => {
+        const minute =  Number(racer.minute) * 60000
+        const second = Number(racer.second) * 1000
+        const milSec = Number(racer.ms)
+        newArr.push({name: racer.name, time: minute + second + milSec})
     })
   return newArr  
 }
+///////////
 
-function totalRaceTimes (combos, timesObj) {
-    const totaledArr = []
-    combos.map(combo => {
-        
-        let comboTotal = 0
-        combo.map(r => {
 
-            comboTotal += timesObj[r]
-            return ''
+function totalRaceTimes (combos) {
+    const totaledCombos = combos.map(combo => {
+        let teamTotal = 0
+        combo.forEach(racer => {
+            teamTotal += racer.time
         })
-        totaledArr.push({combo, total:comboTotal})
-        return comboTotal
+        //combo.teamTotal = teamTotal
+        return ([...combo, {teamTotal}])
     })
-    return totaledArr
+    return totaledCombos
 }
 
-function averageRaceTime (timesArr) {
+function averageRaceTime (teams) {
+    const timesArr = teams.map(team => team[team.length-1].teamTotal)
     var total = 0
     for(let i = 0; i < timesArr.length; i++){
-        total += timesArr[i].total
+        total += timesArr[i]
     }
     return total / timesArr.length
 }
@@ -79,11 +80,12 @@ function closest (raceTimesObjArr, goal, num){
     raceTimesObjArr.map(time => {
         arr.push(time.total)
     })
-    
+
     const closestTime =  arr.reduce((prev, curr) => {
         return (Math.abs(curr - goal) < Math.abs(prev - goal) ? curr : prev)
     })
-    return {combo: raceTimesObjArr[arr.indexOf(closestTime)].combo ,total:closestTime, num}
+
+    return {combo: raceTimesObjArr[arr.indexOf(closestTime)].racers ,total:closestTime, num}
 }
 
 function nthClosest (raceTimesObjArr, goal, teams){
@@ -98,12 +100,7 @@ function nthClosest (raceTimesObjArr, goal, teams){
         let newArr = arr.filter(time => time.total !== close.total)
         arr = newArr
         b++
-
-        //console.log(i + " " + teams)
-        //console.log(close)
-        //console.log(usedRacers)
-        //console.log(arr)
-
+        
         if(!usedRacers.includes(close.combo[0]) && !usedRacers.includes(close.combo[1]) && !usedRacers.includes(close.combo[2])) {
             close.combo.map(racer => usedRacers.push(racer))
             closestTimes.push(close)
@@ -114,27 +111,21 @@ function nthClosest (raceTimesObjArr, goal, teams){
 }
 
 export function findClosestNthTimes (racerObj, teamSize) {
-
-
-    let racers = []
-    let times = []
-
-    racerObj.map(racer => {
-        racers.push(racer.id)
-        times.push(racer.time)
-    })
+    const racers = tooMS(racerObj)
 
     const combinations = k_combinations(racers, teamSize)
-    const ms = tooMS(times)
+    const teamTimes = totalRaceTimes(combinations)
+    const averageTime = averageRaceTime(teamTimes)
 
-    const raceTimesObj = totalRaceTimes(combinations ,ms)
-    const raceTimesAverage = averageRaceTime(raceTimesObj)
-
-    //console.log(raceTimesObj)
-    //console.log(raceTimesAverage)
-
-    //console.log(nthClosest(raceTimesObj, raceTimesAverage, teamSize))
-    return nthClosest(raceTimesObj, raceTimesAverage, teamSize)
+    const raceTimesObj = teamTimes.map(team => {
+        const racerArr = []
+        for(let i = 0; i < team.length - 1; i++){
+            racerArr.push(team[i].name)
+        }
+        return {racers: racerArr, total: team[team.length-1].teamTotal}
+    })
+    
+    return nthClosest(raceTimesObj, averageTime, teamSize)
 }
 
 export function msToTime (time) {
