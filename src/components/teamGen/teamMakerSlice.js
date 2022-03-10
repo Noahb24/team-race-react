@@ -43,6 +43,14 @@ export const teamGenSlice = createSlice ({
         },
         getTeams: (state, action) => {
             state.teams = action.payload
+        },
+        reset: (state, action) => {
+            if(action.payload === 'teams'){
+                state.teams = []
+            } else {
+                state.teams = []
+                state.teamSize = 0
+            }
         }
     }
 })
@@ -51,6 +59,6 @@ export const selectRacers = state => state.teamGen.racers
 export const selectTeamSize = state => state.teamGen.teamSize
 export const selectTeams = state => state.teamGen.teams
 
-export const { addRacer, racerChange, deleteRacer, getTeams, teamSizeChange } = teamGenSlice.actions
+export const { addRacer, racerChange, deleteRacer, getTeams, teamSizeChange, reset } = teamGenSlice.actions
 
 export default teamGenSlice.reducer

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { deleteRacer, racerChange, selectRacers } from './teamMakerSlice'
+import { racerChange, reset, selectRacers } from './teamMakerSlice'
 
 function Racer() {
     const racers = useSelector(selectRacers)
@@ -14,6 +14,7 @@ function Racer() {
             value: value
         }
         dispatch(racerChange(payload))
+        dispatch(reset('teams'))
     }
 
     return (

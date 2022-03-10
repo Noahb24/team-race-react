@@ -3,9 +3,9 @@ import {useDispatch, useSelector} from 'react-redux'
 import Racer from './racer'
 import Teams from './raceTeams'
 import { findClosestNthTimes } from './teamMakerlogic'
-import { addRacer, getTeams, selectRacers, selectTeams, selectTeamSize, teamSizeChange } from './teamMakerSlice'
+import { addRacer, getTeams, reset, selectRacers, selectTeams, selectTeamSize, teamSizeChange } from './teamMakerSlice'
 import './teamMaker.css'
-import {Col, Container, Row} from 'react-bootstrap'
+import {Col, Row} from 'react-bootstrap'
 
 function TeamMaker() {
     const dispatch = useDispatch()
@@ -22,7 +22,6 @@ function TeamMaker() {
             console.log(err)
             return
         }
-        console.log(teams)
         dispatch(getTeams(teams))
     }
     
@@ -47,7 +46,9 @@ function TeamMaker() {
                             }
                         </select>
                     </label>
-                    <button onClick={() => dispatch(addRacer())}>Add Racer</button>
+                    <button onClick={() => {
+                        dispatch(reset())
+                        dispatch(addRacer())}}>Add Racer</button>
                     <button onClick={() => handleGetTeams()}>Get Teams</button>
                 </div>
 

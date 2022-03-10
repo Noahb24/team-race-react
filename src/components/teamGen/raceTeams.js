@@ -18,7 +18,6 @@ function Teams() {
                             {
                                 team.combo.map((racer, j) => {
                                     const racerIndex = racers.find(e => e.name === racer)
-                                    console.log(racerIndex)
                                     return (
                                     <div key={j}>
                                         <h4>{racer} - {`${racerIndex.minute}:${racerIndex.second}.${racerIndex.ms}`}</h4>
