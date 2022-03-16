@@ -3,9 +3,13 @@
     margin: auto;
 }
 
+.centerText {
+    text-align: center;
+}
+
 .fullHeight{
     height: 100%;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .homeImage {
@@ -53,4 +57,16 @@
 #newPostButton {
     width: 10rem;
     margin: 2px;
+}
+
+#homeMiddle{
+    width: 50%
+}
+
+#sandBaggerSideBar{
+    width:25%
+}
+
+#highlightSideBar{
+    width: 25%
 }

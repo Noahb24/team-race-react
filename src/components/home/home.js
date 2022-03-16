@@ -5,6 +5,8 @@ import './home.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
 import { addPostsFromServer, clearNewPost, selectNewPost, selectPostModal, selectPosts, startPostModal, stopPostModal, updateNewPost } from './homeSlice'
+import SandBagger from './sandbagger';
+import Highlights from './Highlights';
 
 require("dotenv").config();
 
@@ -60,18 +62,18 @@ const Home = () => {
   }, [])
 
   return (
-      <Stack direction='horizontal'>
-          <Stack>
-
-          </Stack>
-          <Stack className='fullHeight ms-auto vw-50' >
+      <Stack direction='horizontal' className='fullHeight'>
+          
+          <SandBagger />
+          
+          <Stack className='fullHeight ms-auto' id='homeMiddle' >
             <Image className='homeImage' src={bikes} id='gallery'/>
             <div id='feed'>
               <h1 className='centerTextBox' id='feedHeader'>Team Race Shat</h1>
               <Button onClick={() => startModal()} size='sm' id='newPostButton'>New Post</Button>
               <div id='feedPosts'>
                 {
-                  posts.map((post, i) => {
+                  posts.slice(0).reverse().map((post, i) => {
                     return (
                       <div key={i} className = 'post'>
                         <h4 id='postDate'>{post.date}</h4>
@@ -106,9 +108,9 @@ const Home = () => {
                 </Modal>
             </div>
           </Stack>
-          <Stack className=''>
 
-          </Stack>
+          <Highlights />
+
       </Stack>
   )
 }
