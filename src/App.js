@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/header/header'
 import Home from './components/home/home';
 import TeamGen from './components/teamGen/teamMaker'
+import History from './components/history/history';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
         <Row className='body'>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/history" />
+              <Route path="/history" element={<History />}/>
               <Route path="/leaderboard" />
               <Route path="/book" />
               <Route path="/pictures" />

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import {Image, Stack, Button, Modal, Form} from 'react-bootstrap'
 import bikes from '../../media/uptonBikes.jpeg'

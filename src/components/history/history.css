@@ -1,0 +1,11 @@
+.table{
+    height: fit-content
+}
+
+td{
+    width: fit-content;
+}
+
+.inputNumber {
+    width: 4rem
+}

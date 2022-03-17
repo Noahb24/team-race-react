@@ -1,12 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import {Card, Form, Stack} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { selectSandBaggerList, selectSandBaggerYear, update } from './homeSlice';
+import {url, timeToMinSec} from '../logic'
 
-require("dotenv").config();
-
-const url = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : 'https://team-race-server.vercel.app'
 
 const SandBagger = () => {
     const dispatch = useDispatch()
@@ -35,7 +34,7 @@ const SandBagger = () => {
             dispatch(update({value: sorted, type: 'sandBaggerList'}))
         })
     }
-    const timeToMinSec = time => `${Math.floor(time)}:${((time % 1) * 60).toFixed(3)}`
+
 
 
     const sandCard = (racerName, raceName, factor, qualifying, average, year) => {

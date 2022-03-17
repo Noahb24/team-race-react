@@ -1,6 +1,5 @@
-import React, { useEffect } from 'react';
-import {Card, Stack} from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
+import { Stack} from 'react-bootstrap'
 
 const Highlights = () => {
 
