@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { url } from '../logic'
+import { timeToMinSec, url } from '../logic'
 import { selectStats, selectStatsTableParams, updateStats } from './statsSlice'
 import { tableHeaders } from './statsTableHeader'
 
@@ -33,9 +33,14 @@ const StatsTable = () => {
                         <tr key={i}>
                             {
                                 tableHeaders.map((header, i) => {
-                                    return (
-                                        <td key={i}>{stat[header.name]}</td>
-                                    )
+                                    if(header.name === 'time'){
+                                        return (
+                                            <td key={i}>{timeToMinSec(stat[header.name])}</td>                                        )
+                                    } else {
+                                        return (
+                                            <td key={i}>{stat[header.name]}</td>
+                                        )
+                                    }
                                 })
                             }
                         </tr>

@@ -41,7 +41,7 @@ export const tableHeaders = [
         type: 'select',
         handler: '',
         name: 'race_type',
-        optionArr: [{name: 'All', value:"all"},{name: 'Series', value: 'series'},{name: 'Qualifying', value: 'qualifying'}],
+        optionArr: [{name: 'All', value:"all"},{name: 'Series', value: 'series'},{name: 'Qualifying', value: 'qualifying'}, {name: 'Night', value: 'night'}],
         label: 'Type'
     }
 ]
