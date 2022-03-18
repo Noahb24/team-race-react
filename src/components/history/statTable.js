@@ -19,7 +19,8 @@ const StatsTable = () => {
             url: `${url}/race-times/queryrace`,
             data: tableParams
         }).then(res => {
-            dispatch(updateStats(res.data))
+            const stats = res.data.filter(element => Number(element.time) > 0)
+            dispatch(updateStats(stats))
         })
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
