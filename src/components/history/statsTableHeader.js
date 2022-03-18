@@ -1,11 +1,16 @@
 
+const racerList = ['All', 'Kelly', 'Derek', 'Kali', 'Kris', 'Brady', 'Chuck', 'Shaun', 'Terryl', 'Noah', 'Brenna']; racerList.sort()
+
+const racerListObj = racerList.map(racer => {
+    return ({name: racer, value:racer})
+})
 
 export const tableHeaders = [
     {
         type: 'select',
         handler: '',
         name: 'racer',
-        optionArr: [{name: 'All', value:"all"},],
+        optionArr: racerListObj,
         label: 'Name'
     }, {
         type: 'number',
