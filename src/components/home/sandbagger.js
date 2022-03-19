@@ -68,7 +68,7 @@ const SandBagger = () => {
                 <option value='2022'>2022</option>
             </Form.Select>
             <h1 className='centerText'>Sand Bagger Watch List</h1>
-            {sandBaggerList.map(racer => sandCard(racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year))}
+            {sandBaggerList.map(racer => {if(racer.series){return sandCard(racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year)}})}
         </Stack>
         
     )
