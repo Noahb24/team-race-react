@@ -10,15 +10,15 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="offcanvasNavbar" />
                 <Navbar.Offcanvas id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel" placement="end">
                     <Offcanvas.Header closeButton>
-                        <Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
+                        <Offcanvas.Title id="offcanvasNavbarLabel">Navigation</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
                         <Nav>
                             <Nav.Link href="/">Home</Nav.Link>
                             <Nav.Link href="/history">History</Nav.Link>
-                            <Nav.Link href="/leaderboard">Leader Board</Nav.Link>
+                            {/* <Nav.Link href="/leaderboard">Leader Board</Nav.Link>
                             <Nav.Link href="/book">Kris's Fun Facts</Nav.Link>
-                            <Nav.Link href="/pictures">Pictures</Nav.Link>
+                            <Nav.Link href="/pictures">Pictures</Nav.Link> */}
                             <Nav.Link href="teamgenerator">Team Generator</Nav.Link>
                         </Nav>
                     </Offcanvas.Body>
