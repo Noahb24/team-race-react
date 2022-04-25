@@ -3,13 +3,14 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectSortColumn, selectSortType, selectStats, selectStatsTableParams, sortStats, update, updateStatsTableParams } from './statsSlice'
 
-import { Form, Table } from 'react-bootstrap'
+import { Form, Table, Button } from 'react-bootstrap'
 
 import { createInput } from '../logic'
 import { tableHeaders } from './statsTableHeader'
 
 import './history.css'
 import StatsTable from './statTable'
+import BottomTray from './bottomTray'
 
 const History = () => {
     const dispatch = useDispatch()
@@ -41,6 +42,9 @@ const History = () => {
                     <td ><Form.Select size='sm' value={sortColumn} onChange={e => dispatch(update({type:'sortColumn', value:e.target.value}))}>
                         {tableHeaders.map((header, i) => <option key={i} value={header.name}>{header.label}</option>)}
                     </Form.Select></td>
+                    <td>
+                        <Button onClick={() => dispatch(update({value: 'trayOpen', type: 'trayState'}))}>Self Destruct</Button>
+                    </td>
                 </tr>
                 <tr>
                     {tableHeaders.map((header, i) => <td key={i} className={header.type==='number' || header.type==='none' ? 'inputNumber' : ''}>{header.label}</td>)}
@@ -58,7 +62,7 @@ const History = () => {
             </thead>
 
             <StatsTable />
-
+            <BottomTray />
         </Table>
     )
 }

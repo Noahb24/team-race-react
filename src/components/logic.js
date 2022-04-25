@@ -1,3 +1,4 @@
+import axios from "axios";
 import { Form } from "react-bootstrap";
 
 require("dotenv").config();
@@ -9,9 +10,9 @@ export const timeToMinSec = time => `${Math.floor(time)}:${((time % 1) * 60).toF
 
 export const createInput = (type, handler, name, optionArr, label, value) => {
     if(type === 'select'){
-        return (
+      return (
             <Form.Select size='sm' value={value} onChange={e => handler(name, e.target.value)}>
-                {optionArr.map((option, i) => <option key={i} value={option.value}>{option.name}</option>)}
+                {optionArr.map((option, i) => <option key={i} id='selected' value={option.value}>{option.name}</option>)}
             </Form.Select>
         )
     } else if (type === 'number' || type === 'text'){
@@ -23,4 +24,11 @@ export const createInput = (type, handler, name, optionArr, label, value) => {
             <Form.Control size ='sm' className='inputNumber' readOnly>{value}</Form.Control>
         )
     }
+}
+
+export async function getTimesByYearRaceSeries (year, race) {
+    const times = await axios.post(`${url}/race-times/queryrace`,
+    {year: Number(year), race, race_type: 'series'})
+
+    return times
 }

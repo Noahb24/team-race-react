@@ -12,7 +12,12 @@ const initialState = {
     stats: [],
     sortType: 'asc',
     sortColumn: 'racer',
-
+    trayState: 'trayClose',
+    superCrossTimes: {
+        year: 2022,
+        track: 'Robb Ranch',
+        times: []
+    },
 }
 
 export const statsSlice = createSlice({ 
@@ -27,6 +32,9 @@ export const statsSlice = createSlice({
         },
         updateStats: (state, action) => {
             state.stats = action.payload
+        },
+        updateSuperCross: (state, action) => {
+            state.superCrossTimes[action.payload.type] = action.payload.value
         },
         sortStats: state => {
             const sortColumn = state.sortColumn
@@ -63,11 +71,13 @@ export const statsSlice = createSlice({
     }
 })
 
-export const {updateStatsTableParams, updateStats, update, sortStats} = statsSlice.actions
+export const {updateStatsTableParams, updateStats, update, sortStats, updateSuperCross} = statsSlice.actions
 
 export const selectStats = state => state.history.stats
 export const selectStatsTableParams = state => state.history.statsTableParams
 export const selectSortType = state => state.history.sortType
 export const selectSortColumn = state => state.history.sortColumn
+export const selectTrayState = state => state.history.trayState
+export const selectSuperCross = state => state.history.superCrossTimes
 
 export default statsSlice.reducer
