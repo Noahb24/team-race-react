@@ -35,6 +35,7 @@ function TeamMaker() {
                         <select id="teamSize" onChange ={e => dispatch(teamSizeChange(e.target.value))} type='number' value = {teamSize}>
                             <option key='a' value={0} disabled>Select</option>
                             {
+                                // eslint-disable-next-line array-callback-return
                                 racers.map((racer, i) => {
                                     const num = i +1
                                     if(num !== 1 && num !== racers.length && racers.length % num === 0){

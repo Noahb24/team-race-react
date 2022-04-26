@@ -37,13 +37,13 @@ const SandBagger = () => {
 
 
 
-    const sandCard = (racerName, raceName, factor, qualifying, average, year) => {
+    const sandCard = (key, racerName, raceName, factor, qualifying, average, year) => {
         const percent = `${(factor*100).toFixed(0)}%`
         const qualifyingTime = timeToMinSec(qualifying)
         const averageTime = timeToMinSec(average)
 
         return (
-            <Card>
+            <Card key={key}>
                 <Card.Img />
                 <Card.Body>
                     <Card.Title>{racerName}</Card.Title>
@@ -62,13 +62,14 @@ const SandBagger = () => {
 
     return (
         <Stack className='fullHeight ms-auto' id='sandBaggerSideBar'>
-            <Form.Select onChange={e => dispatch(update({value: e.target.value, type: 'sandBaggerYear'}))}>
-                <option value='2020'>2020</option>
-                <option value='2021'>2021</option>
+            <Form.Select value={sandBaggerYear} onChange={e => dispatch(update({value: e.target.value, type: 'sandBaggerYear'}))}>
                 <option value='2022'>2022</option>
+                <option value='2021'>2021</option>
+                <option value='2020'>2020</option>
             </Form.Select>
             <h1 className='centerText'>Sand Bagger Watch List</h1>
-            {sandBaggerList.map(racer => {if(racer.series){return sandCard(racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year)}})}
+            {// eslint-disable-next-line array-callback-return
+            sandBaggerList.map((racer, i) => {if(racer.series){return sandCard(i, racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year)}})}
         </Stack>
         
     )
