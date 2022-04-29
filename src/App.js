@@ -9,6 +9,7 @@ import Header from './components/header/header'
 import Home from './components/home/home';
 import TeamGen from './components/teamGen/teamMaker'
 import History from './components/history/history';
+import Podcasts from './components/podcasts/podcasts';
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
               <Route path="/book" />
               <Route path="/pictures" />
               <Route path='/teamgenerator' element={<TeamGen />}/>
+              <Route path='/podcasts' element={<Podcasts />} />
             </Routes>
         </Row>
       </Container>

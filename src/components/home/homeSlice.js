@@ -12,7 +12,7 @@ const initialState = {
         name: '',
         content: '',
     },
-    sandBaggerYear: '2022',
+    sandBaggerYear: '2021',
     sandBaggerList: [],
 }
 
