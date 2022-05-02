@@ -43,7 +43,7 @@ const SandBagger = () => {
         const averageTime = timeToMinSec(average)
 
         return (
-            <Card key={key}>
+            <Card key={key} id='sandCard'>
                 <Card.Img />
                 <Card.Body>
                     <Card.Title>{racerName}</Card.Title>
@@ -61,13 +61,13 @@ const SandBagger = () => {
       }, [sandBaggerYear])
 
     return (
-        <Stack className='fullHeight ms-auto' id='sandBaggerSideBar'>
+        <Stack className='homeComponent ms-auto' id='sandBaggerSideBar'>
+            <h1 className='centerText'>Sand Bagger Watch List</h1>
             <Form.Select value={sandBaggerYear} onChange={e => dispatch(update({value: e.target.value, type: 'sandBaggerYear'}))}>
                 <option value='2022'>2022</option>
                 <option value='2021'>2021</option>
                 <option value='2020'>2020</option>
             </Form.Select>
-            <h1 className='centerText'>Sand Bagger Watch List</h1>
             {// eslint-disable-next-line array-callback-return
             sandBaggerList.map((racer, i) => {if(racer.series){return sandCard(i, racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year)}})}
         </Stack>

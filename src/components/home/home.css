@@ -19,6 +19,19 @@
     border-radius: 10px;
 }
 
+.homeMainBox {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    box-sizing: border-box;
+    background-color: lightgray;
+    overflow-x: hidden;
+}
+
+.fullHeight {
+    padding: 0;
+}
+
 .post{
     border: 1px solid black;
 }
@@ -38,7 +51,7 @@
 }
 
 #feed {
-    height: 60%;
+    height: 70%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,15 +73,22 @@
 }
 
 #homeMiddle{
-    width: 50%
+    width: 40%;
+    padding-top: 1rem;
+    align-content: center;
 }
 
 #sandBaggerSideBar{
-    width:25%
+    width:30%;
 }
 
 #highlightSideBar{
-    width: 25%
+    width: 30%;
+    align-items: center;
+}
+
+#sandCard {
+    background-color: lightgray;
 }
 
 .media {
@@ -84,7 +104,8 @@
 
 .header {
     text-align: center;
-    padding: .5rem;
+    width: 100%;
+    margin: 0;
 }
 
 .podcasts {
@@ -107,4 +128,25 @@
     width: fit-content;
     height: fit-content;
     margin: auto;
+}
+
+@media only screen and (max-width: 600px){
+    .homeComponent {
+        margin: 2rem 0;
+    }
+    .homeMainBox {
+        flex-flow: column;
+    }
+    #sandBaggerSideBar {
+        width: 100%;
+        order: 3;
+    }
+    #highlightSideBar {
+        width: 100%;
+        order: 2;
+    }
+    #homeMiddle {
+        order: 1;
+        width: 100%;
+    }
 }

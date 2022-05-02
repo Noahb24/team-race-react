@@ -11,7 +11,7 @@ td{
 }
 
 #trayOpen{
-    height: 45%;
+    height: 80%;
 }
 
 #trayClose{
@@ -65,8 +65,15 @@ td{
 #selected {
     color: green;
 }
+.supercrossTable {
+    overflow-y: scroll;
+}
 
-.lapContainer {
+.supercrossLapContainer {
     border: 1px solid white;
     border-radius: 16px;
+}
+
+.supercrossRacer{
+    color: white
 }

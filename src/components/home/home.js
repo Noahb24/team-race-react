@@ -63,7 +63,7 @@ const Home = () => {
   }, [])
 
   return (
-      <Stack direction='horizontal' className='fullHeight'>
+      <div className='homeMainBox'>
           
           <SandBagger />
           
@@ -112,7 +112,7 @@ const Home = () => {
 
           <Highlights />
 
-      </Stack>
+      </div>
   )
 }
 
