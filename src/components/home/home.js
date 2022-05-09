@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
 import {Image, Stack, Button, Modal, Form} from 'react-bootstrap'
-import bikes from '../../media/uptonBikes.jpeg'
+import homeImage from '../../media/2022RobbRanch.jpeg'
 import './home.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
@@ -68,7 +68,7 @@ const Home = () => {
           <SandBagger />
           
           <Stack className='fullHeight ms-auto' id='homeMiddle' >
-            <Image className='homeImage' src={bikes} id='gallery'/>
+            <Image className='homeImage' src={homeImage} id='gallery'/>
             <div id='feed'>
               <h1 className='centerTextBox' id='feedHeader'>Team Race Shat</h1>
               <Button onClick={() => startModal()} size='sm' id='newPostButton'>New Post</Button>
