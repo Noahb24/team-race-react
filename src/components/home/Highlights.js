@@ -5,14 +5,29 @@ const Highlights = () => {
 
 
     return (
-        <Stack className='homeComponent ms-auto' id='highlightSideBar'>
+        <div className='homeComponent ms-auto' id='highlightSideBar'>
             <h1>Recent Updates</h1>
             <iframe width="420" height="236" src="https://www.youtube.com/embed/w2-9kbnmg1o" 
                             title="YouTube video player" frameborder="0" 
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                             className='podcast'
                             allowfullscreen></iframe>
-        </Stack>
+            <h1 id='pointsHeader'>Current Points</h1>
+            <div className='points' id='teamPoints'>
+                <h4>Team Race Points</h4>
+                <p>Alisha - 1 +</p>
+                <p>Noah - 1 -- Sean - 1 -- Chuck - 1</p>
+                <p>BJ - 2 -- John - 2 -- Kelly - 1</p>
+                <p>Kris - 3 -- Derek - 3 -- Ed - 3</p>
+            </div>
+            <div className='points' id='kidsPoints'>
+                <h4>Kids Race Points</h4>
+                <p>Owen - 10</p>
+                <p>Riggs - 9</p>
+                <p>Colton - 8</p>
+                <p>Ainsley - 3</p>
+            </div>
+        </div>
     )
 }
 
