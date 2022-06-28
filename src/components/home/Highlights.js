@@ -17,7 +17,7 @@ const Highlights = () => {
                 <h4>Team Race Points</h4>
                 <p>Alisha - 1 +</p>
                 <p>Noah - 1 -- Sean - 1 -- Chuck - 1</p>
-                <p>BJ - 2 -- John - 2 -- Kelly - 1</p>
+                <p>BJ - 2 -- John - 2 -- Kelly - 2</p>
                 <p>Kris - 3 -- Derek - 3 -- Ed - 3</p>
             </div>
             <div className='points' id='kidsPoints'>
