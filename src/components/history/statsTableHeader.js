@@ -1,5 +1,6 @@
 
-const racerList = ['Kelly', 'Derek', 'Kali', 'Kris', 'Brady', 'Chuck', 'Shaun', 'Terryl', 'Noah', 'Brenna']; racerList.sort()
+const racerList = ['AJ', 'BJ', 'Brady', 'Brenna', 'Chuck','Clayton', 'Dakota', 'Derek', 'Ed', 'John', 'Kali', 'Kelly', 'Kris',
+                   'Noah', 'Sean', 'Shaun', 'Terryl']; racerList.sort()
 
 const racerListObj = racerList.map(racer => {
     return ({name: racer, value:racer})
@@ -34,7 +35,7 @@ export const tableHeaders = [
         type: 'select',
         handler: '',
         name: 'race',
-        optionArr: [{name: 'All', value:"all"},{name: "Backwoods", value:'Backwoods'}, {name:'Sunol', value:'Sunol'}, {name:'Robb Ranch', value:'Robb Ranch'}],
+        optionArr: [{name: 'All', value:"all"},{name: "Backwoods", value:'Backwoods'}, {name:'Sunol', value:'Sunol'}, {name:'Robb Ranch', value:'Robb Ranch'}, {name: 'PNCC', value: 'PNCC'}],
         label: 'Race'
     }, {
         type: 'select',

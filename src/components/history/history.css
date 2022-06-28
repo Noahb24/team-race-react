@@ -1,6 +1,7 @@
 .table{
-    height: fit-content
-}
+    height: fit-content;
+    margin: 1rem;
+}   
 
 td{
     width: fit-content;

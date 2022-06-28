@@ -25,7 +25,7 @@ const Highlights = () => {
                 <p>Owen - 10</p>
                 <p>Riggs - 9</p>
                 <p>Colton - 8</p>
-                <p>Ainsley - 3</p>
+                <p>Ainsley - 7</p>
             </div>
         </div>
     )

@@ -13,7 +13,6 @@ const StatsTable = () => {
     const tableParams = useSelector(selectStatsTableParams)
 
     useEffect(() => {
-        
         axios({
             method: 'post',
             url: `${url}/race-times/queryrace`,
@@ -22,7 +21,6 @@ const StatsTable = () => {
             const stats = res.data.filter(element => Number(element.time) > 0)
             dispatch(updateStats(stats))
         })
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [tableParams])
 
