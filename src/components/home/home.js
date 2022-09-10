@@ -5,7 +5,7 @@ import homeImage from '../../media/2022RobbRanch.jpeg'
 import './home.css'
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux'
-import { addPostsFromServer, clearNewPost, selectNewPost, selectPostModal, selectPosts, startPostModal, stopPostModal, updateNewPost } from './homeSlice'
+import { addPostsFromServer, clearNewPost, selectNewPost, selectPostModal, selectPosts, startPostModal, stopPostModal, update, updateNewPost } from './homeSlice'
 import SandBagger from './sandbagger';
 import Highlights from './Highlights';
 
@@ -24,6 +24,13 @@ const Home = () => {
     .then(res => {
       dispatch(addPostsFromServer(res.data ))
     })
+  }
+
+  const fetchCurrentPoints = () => {
+	axios.get(`${url}/points/getCurrentPoints`)
+	.then(res => {
+		dispatch(update({type: 'points', value: res.data}))
+	})
   }
 
   const startModal = () => {
@@ -60,13 +67,14 @@ const Home = () => {
 
   useEffect(() => {
     fetchPosts()
+	fetchCurrentPoints()
   }, [])
 
   return (
       <div className='homeMainBox'>
-          
+
           <SandBagger />
-          
+
           <Stack className='fullHeight ms-auto' id='homeMiddle' >
             <Image className='homeImage' src={homeImage} id='gallery'/>
             <div id='feed'>
@@ -85,8 +93,8 @@ const Home = () => {
                   })
                 }
               </div>
-              
-              
+
+
                 <Modal
                 show={postModal}
                 onHide={stopModal}
@@ -97,9 +105,9 @@ const Home = () => {
                     <Modal.Title>Blog Post</Modal.Title>
                   </Modal.Header>
                   <Modal.Body>
-                    <Form.Control type='text' placeholder='Name' 
+                    <Form.Control type='text' placeholder='Name'
                       value={newPost.name} onChange={e => handleNewPostChange('name', e.target.value)}/>
-                    <Form.Control as='textarea' rows={5} placeholder='Post' 
+                    <Form.Control as='textarea' rows={5} placeholder='Post'
                       value={newPost.content} onChange={e => handleNewPostChange('content', e.target.value)}/>
                   </Modal.Body>
                   <Modal.Footer>

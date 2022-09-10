@@ -14,6 +14,7 @@ const initialState = {
     },
     sandBaggerYear: '2022',
     sandBaggerList: [],
+	points: {},
 }
 
 export const homeSlice = createSlice({
@@ -49,8 +50,9 @@ export const selectPostModal = state => state.home.postModal
 export const selectNewPost = state => state.home.newPost
 export const selectSandBaggerYear = state => state.home.sandBaggerYear
 export const selectSandBaggerList = state => state.home.sandBaggerList
+export const selectCurrentPoints = state => state.home.points
 
-export const { addPostsFromServer, startPostModal, stopPostModal, 
+export const { addPostsFromServer, startPostModal, stopPostModal,
                updateNewPost, clearNewPost, update } = homeSlice.actions
 
 export default homeSlice.reducer
