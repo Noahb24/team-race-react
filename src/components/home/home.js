@@ -33,6 +33,13 @@ const Home = () => {
 	})
   }
 
+  const fetchHighlightVideo = () => {
+	axios.get(`${url}/youtube/highlight_podcast`)
+	.then(res => {
+		dispatch(update({type: 'highlight_podcast', value: res.data}))
+	})
+  }
+
   const startModal = () => {
     dispatch(startPostModal())
   }
@@ -68,6 +75,7 @@ const Home = () => {
   useEffect(() => {
     fetchPosts()
 	fetchCurrentPoints()
+	fetchHighlightVideo()
   }, [])
 
   return (

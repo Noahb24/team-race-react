@@ -116,7 +116,7 @@
     width: 100%;
     height: 300px;
     display: flex;
-    flex-flow: nowrap;
+    flex-flow: wrap;
     justify-content: center;
 }
 .podcast {
@@ -132,6 +132,11 @@
 
 #pointsHeader, .points h4, p{
     text-align: center;
+}
+
+#highlight-podcast-box{
+	margin: 0 auto;
+	width: fit-content;
 }
 
 @media only screen and (max-width: 600px){

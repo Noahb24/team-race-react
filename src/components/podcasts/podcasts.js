@@ -1,6 +1,25 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectPodcasts, update } from '../home/homeSlice';
+import { createYoutubeEmbed } from '../logic';
 
 const Podcasts = () => {
+	const dispatch = useDispatch()
+	const url = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : 'https://team-race-server.vercel.app'
+
+	const podcasts = useSelector(selectPodcasts)
+
+	function getPodcastUrls () {
+		axios.get(`${url}/youtube/podcasts`)
+		.then(res => {
+			dispatch(update({type: 'podcasts', value: res.data}))
+		})
+	}
+
+	useEffect(() => {
+		getPodcastUrls()
+	}, [])
 
     return (
         <div className='media'>
@@ -8,38 +27,22 @@ const Podcasts = () => {
                 <h1 className='header mainHeader'>Track Overview</h1>
                 <div>
                     <h3 className='header' >Backwoods</h3>
-                    <iframe width="420" height="236" src="https://www.youtube.com/embed/KSizGnMjjww" 
-                    title="YouTube video player" frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen></iframe>
+					{
+						createYoutubeEmbed("https://www.youtube.com/embed/KSizGnMjjww")
+					}
                 </div>
             </div>
             <div className='podcasts'>
                 <h1 className='header mainHeader'>Podcasts</h1>
                 <div className='videoScroll'>
-                    <iframe width="420" height="236" src="https://www.youtube.com/embed/3qu9wE0FVCQ" 
-                            title="YouTube video player" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            className='podcast'
-                            allowfullscreen></iframe>
-                    <iframe width="420" height="236" src="https://www.youtube.com/embed/w2-9kbnmg1o" 
-                            title="YouTube video player" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            className='podcast'
-                            allowfullscreen></iframe>
-                    <iframe width="420" height="236" src="https://www.youtube.com/embed/7RP4vnPuJ1o" 
-                            title="YouTube video player" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            className='podcast'
-                            allowfullscreen></iframe>
-                    <iframe width="420" height="236" src="https://www.youtube.com/embed/cS8a_S6G7VM" 
-                            title="YouTube video player" frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            className='podcast'
-                            allowfullscreen></iframe>
+					{
+						podcasts.map((link, index) => {
+							return createYoutubeEmbed(link.link, index)
+						})
+					}
                 </div>
             </div>
-        
+
         </div>
 
     )

@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { selectCurrentPoints } from './homeSlice';
+import { selectCurrentPoints, selectHighlightPodcast } from './homeSlice';
+import { createYoutubeEmbed } from '../logic';
 
 const Highlights = () => {
-
 	const points = useSelector(selectCurrentPoints)
+	const highlight_podcast = useSelector(selectHighlightPodcast)
 
 	let racers = {}
 	if(points[0] && points[0].points){
@@ -46,21 +47,14 @@ const Highlights = () => {
 		racer_text.push(text)
 	})
 
-	function logRacers(){
-		console.log(racers)
-		console.log(racer_text)
-	}
-
-
     return (
         <div className='homeComponent ms-auto' id='highlightSideBar'>
             <h1>Recent Updates</h1>
-            <iframe width="420" height="236" src="https://www.youtube.com/embed/cS8a_S6G7VM"
-                            title="YouTube video player"
-							frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            className='podcast'
-                            allowFullScreen></iframe>
+			<div id='highlight-podcast-box'>
+				{
+					highlight_podcast ? createYoutubeEmbed(highlight_podcast[0].link) : ''
+				}
+			</div>
             <h1 id='pointsHeader'>Current Points</h1>
             <div className='points' id='teamPoints'>
                 <h4>Team Race Points</h4>

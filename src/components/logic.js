@@ -32,3 +32,14 @@ export async function getTimesByYearRaceSeries (year, race) {
 
     return times
 }
+
+export function createYoutubeEmbed(link, key = 1){
+	return (
+		<iframe width="420" height="236" src={link}
+			title="YouTube video player" frameBorder="0"
+			allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+			className='podcast'
+			key={key}
+			allowFullScreen></iframe>
+	)
+}
