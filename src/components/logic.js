@@ -6,7 +6,16 @@ require("dotenv").config();
 export const url = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : 'https://team-race-server.vercel.app'
 
 //converts time in minutes w/ decimal to mn:sec.ms
-export const timeToMinSec = time => `${Math.floor(time)}:${((time % 1) * 60).toFixed(3)}`
+export const timeToMinSec = time => {
+	const abs_time = Math.abs(time)
+	if (time < 0){
+		return `-${Math.floor(abs_time)}:${((abs_time % 1) * 60).toFixed(3)}`
+	} else if (time === 0){
+		return ''
+	} else {
+		return `${Math.floor(abs_time)}:${((abs_time % 1) * 60).toFixed(3)}`
+	}
+}
 
 export const createInput = (type, handler, name, optionArr, label, value) => {
     if(type === 'select'){

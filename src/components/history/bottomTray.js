@@ -27,12 +27,12 @@ const BottomTray = () => {
             })
         }
         updateRaceTimes()
-        
+
     }, [superCross.track, superCross.year])
 
     const lapContainer = (racers) => {
         const minTotalTime = Math.min(...racers.map(e => e.totalRaceTime)) > 0 ? Math.min(...racers.map(e => e.totalRaceTime)) : 1
-        console.log(minTotalTime)
+        // console.log(minTotalTime)
         return(
             <Col className ='supercrossLapContainer'>
                 {racers.map(racer => {

@@ -43,7 +43,7 @@ const History = () => {
                         {tableHeaders.map((header, i) => <option key={i} value={header.name}>{header.label}</option>)}
                     </Form.Select></td>
                     <td>
-                        <Button onClick={() => dispatch(update({value: 'trayOpen', type: 'trayState'}))}>Self Destruct</Button>
+                        {/* <Button onClick={() => dispatch(update({value: 'trayOpen', type: 'trayState'}))}>Self Destruct</Button> */}
                     </td>
                 </tr>
                 <tr>

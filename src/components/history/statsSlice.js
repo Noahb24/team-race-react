@@ -18,9 +18,10 @@ const initialState = {
         track: 'Robb Ranch',
         times: []
     },
+	loading_race_times: false
 }
 
-export const statsSlice = createSlice({ 
+export const statsSlice = createSlice({
     name: 'stats',
     initialState,
     reducers: {
@@ -79,5 +80,6 @@ export const selectSortType = state => state.history.sortType
 export const selectSortColumn = state => state.history.sortColumn
 export const selectTrayState = state => state.history.trayState
 export const selectSuperCross = state => state.history.superCrossTimes
+export const selectLoadingRaceTimes = state => state.history.loading_race_times
 
 export default statsSlice.reducer
