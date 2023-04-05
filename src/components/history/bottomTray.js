@@ -150,6 +150,7 @@ const BottomTray = () => {
 						<h4 id={race_stats.track === 'Robb Ranch' ? 'selected' : 'unselected'} onClick={() => handleTrackChange('Robb Ranch')}>Robb Ranch</h4>
 						<h4 id={race_stats.track === 'Backwoods' ? 'selected' : 'unselected'} onClick={() => handleTrackChange('Backwoods')}>Backwoods</h4>
 						<h4 id={race_stats.track === 'Sunol' ? 'selected' : 'unselected'} onClick={() => handleTrackChange('Sunol')}>Sunol</h4>
+						<h4 id={race_stats.track === 'PNCC' ? 'selected' : 'unselected'} onClick={() => handleTrackChange('PNCC')}>PNCC</h4>
 						<Form.Select id='superCrossYearDropdown' value={race_stats.year} onChange={e => handleYearChange(e.target.value)}>
 							<option>2023</option>
 							<option>2022</option>
