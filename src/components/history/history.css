@@ -1,7 +1,12 @@
 .table{
     height: fit-content;
     margin: 1rem;
-}   
+	width: 100%;
+}
+
+.toast-container{
+	z-index: 10000;
+}
 
 td{
     width: fit-content;
@@ -77,4 +82,27 @@ td{
 
 .supercrossRacer{
     color: white
+}
+
+.times-row{
+	color: white;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.times-row table{
+	color: white;
+}
+
+.times-row h4 {
+	text-align: center;
+}
+
+.average-lap-container{
+	width: 30%;
+}
+
+.best-lap-container{
+	width: 30%;
 }

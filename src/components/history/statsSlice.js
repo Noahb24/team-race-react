@@ -13,12 +13,15 @@ const initialState = {
     sortType: 'asc',
     sortColumn: 'racer',
     trayState: 'trayClose',
-    superCrossTimes: {
-        year: 2022,
+    raceStats: {
+        year: '2022',
         track: 'Robb Ranch',
-        times: []
+        times: [],
+		racer_times: []
     },
-	loading_race_times: false
+	loading: false,
+	loading_race_times: false,
+	loading_stat_times: false
 }
 
 export const statsSlice = createSlice({
@@ -34,9 +37,19 @@ export const statsSlice = createSlice({
         updateStats: (state, action) => {
             state.stats = action.payload
         },
-        updateSuperCross: (state, action) => {
-            state.superCrossTimes[action.payload.type] = action.payload.value
+        updateRaceStats: (state, action) => {
+            state.raceStats[action.payload.type] = action.payload.value
         },
+		handleLoading: state => {
+			if(
+				state.loading_race_times ||
+				state.loading_stat_times
+			){
+				state.loading = true
+			} else {
+				state.loading = false
+			}
+		},
         sortStats: state => {
             const sortColumn = state.sortColumn
             const sortType = state.sortType
@@ -72,14 +85,16 @@ export const statsSlice = createSlice({
     }
 })
 
-export const {updateStatsTableParams, updateStats, update, sortStats, updateSuperCross} = statsSlice.actions
+export const {updateStatsTableParams, updateStats, update, sortStats, updateRaceStats, handleLoading} = statsSlice.actions
 
 export const selectStats = state => state.history.stats
 export const selectStatsTableParams = state => state.history.statsTableParams
 export const selectSortType = state => state.history.sortType
 export const selectSortColumn = state => state.history.sortColumn
 export const selectTrayState = state => state.history.trayState
-export const selectSuperCross = state => state.history.superCrossTimes
+export const selectRaceStats = state => state.history.raceStats
+export const selectLoading = state => state.history.loading
 export const selectLoadingRaceTimes = state => state.history.loading_race_times
+export const selectLoadingStatTimes = state => state.history.loading_stat_times
 
 export default statsSlice.reducer
