@@ -89,6 +89,10 @@ td{
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
+	overflow: scroll;
+	height: 90%;
+	padding-bottom: 40px;
 }
 
 .times-row table{
@@ -100,9 +104,9 @@ td{
 }
 
 .average-lap-container{
-	width: 30%;
+	width: 300px;
 }
 
 .best-lap-container{
-	width: 30%;
+	width: 300px;
 }

@@ -81,14 +81,14 @@ const BottomTray = () => {
 		let racers = []
 
 		_.each(times, time => {
-			if(!_.includes(racers, time.racer)){
+			if(!_.includes(racers, time.racer) && time.time > 0){
 				racers.push(time.racer)
 			}
 			if(fast_times_map[time.racer]){
-				if(time.time < fast_times_map[time.racer]){
+				if(time.time < fast_times_map[time.racer] && time.time > 0){
 					fast_times_map[time.racer] = time.time
 				}
-			} else {
+			} else if(time.time > 0) {
 				fast_times_map[time.racer] = time.time
 			}
 		})
@@ -97,7 +97,7 @@ const BottomTray = () => {
 			let sum = 0
 			let count = 0
 			_.each(times, time => {
-				if(time.racer === racer){
+				if(time.racer === racer && time.time > 0){
 					sum += time.time
 					count ++
 				}
