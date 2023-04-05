@@ -92,7 +92,7 @@ td{
 	flex-wrap: wrap;
 	overflow: scroll;
 	height: 90%;
-	padding-bottom: 40px;
+	padding: 10px 0 40px;
 }
 
 .times-row table{
