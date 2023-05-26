@@ -19,6 +19,7 @@ const initialState = {
         times: [],
 		racer_times: []
     },
+	header_params: {},
 	loading: false,
 	loading_race_times: false,
 	loading_stat_times: false
@@ -96,5 +97,6 @@ export const selectRaceStats = state => state.history.raceStats
 export const selectLoading = state => state.history.loading
 export const selectLoadingRaceTimes = state => state.history.loading_race_times
 export const selectLoadingStatTimes = state => state.history.loading_stat_times
+export const selectHeaderParams = state => state.history.header_params
 
 export default statsSlice.reducer

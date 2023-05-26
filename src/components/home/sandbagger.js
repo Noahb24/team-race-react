@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from 'react';
-import {Card, Form, Stack} from 'react-bootstrap'
+import {Card, Form, TabContent} from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { selectSandBaggerList, selectSandBaggerYear, update } from './homeSlice';
@@ -35,7 +35,20 @@ const SandBagger = () => {
         })
     }
 
+	const getYears = () => {
+		const current_year = new Date().getFullYear()
+		const first_year = 2020
+		const years = [
+			<option key='all' value='all'>All</option>
+		]
+		let param_year = current_year
+		while(param_year >= first_year){
+			years.push(<option key={param_year} value={param_year}>{param_year}</option>)
+			param_year -= 1
+		}
 
+		return years
+	}
 
     const sandCard = (key, racerName, raceName, factor, qualifying, average, year) => {
         const percent = `${(factor*100).toFixed(0)}%`
@@ -44,7 +57,6 @@ const SandBagger = () => {
 
         return (
             <Card key={key} id='sandCard'>
-                <Card.Img />
                 <Card.Body>
                     <Card.Title>{racerName}</Card.Title>
                     <Card.Text>Race: {raceName} - {year}</Card.Text>
@@ -61,17 +73,18 @@ const SandBagger = () => {
       }, [sandBaggerYear])
 
     return (
-        <Stack className='homeComponent ms-auto' id='sandBaggerSideBar'>
+        <TabContent className='homeComponent ms-auto' id='sandBaggerSideBar'>
             <h1 className='centerText'>Sand Bagger Watch List</h1>
             <Form.Select value={sandBaggerYear} onChange={e => dispatch(update({value: e.target.value, type: 'sandBaggerYear'}))}>
-                <option value='2022'>2022</option>
-                <option value='2021'>2021</option>
-                <option value='2020'>2020</option>
+                {
+					getYears()
+				}
             </Form.Select>
             {// eslint-disable-next-line array-callback-return
-            sandBaggerList.map((racer, i) => {if(racer.series){return sandCard(i, racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year)}})}
-        </Stack>
-        
+            	sandBaggerList.map((racer, i) => {if(racer.series){return sandCard(i, racer.racerName, racer.name, racer.sandBaggerFactor, racer.qualifyingTime, racer.seriesAverage, racer.series[0].year)}})
+			}
+        </TabContent>
+
     )
 }
 

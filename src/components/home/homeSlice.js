@@ -12,8 +12,9 @@ const initialState = {
         name: '',
         content: '',
     },
-    sandBaggerYear: '2022',
+    sandBaggerYear: new Date().getFullYear(),
     sandBaggerList: [],
+    powerPointsList: [],
 	points: {},
 	podcasts: [],
 	highlight_podcast: '',
@@ -55,6 +56,7 @@ export const selectSandBaggerList = state => state.home.sandBaggerList
 export const selectCurrentPoints = state => state.home.points
 export const selectPodcasts = state => state.home.podcasts
 export const selectHighlightPodcast = state => state.home.highlight_podcast
+export const selectPowerPointsList = state => state.home.powerPointsList
 
 export const { addPostsFromServer, startPostModal, stopPostModal,
                updateNewPost, clearNewPost, update } = homeSlice.actions

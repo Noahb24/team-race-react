@@ -79,7 +79,7 @@
 }
 
 #sandBaggerSideBar{
-    width:30%;
+    width:95%;
 }
 
 #highlightSideBar{
@@ -137,6 +137,10 @@
 #highlight-podcast-box{
 	margin: 0 auto;
 	width: fit-content;
+}
+
+.sidebar-tabs{
+	justify-content: space-evenly;
 }
 
 @media only screen and (max-width: 600px){

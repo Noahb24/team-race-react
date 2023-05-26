@@ -64,13 +64,13 @@ const Highlights = () => {
 					})
 				}
             </div>
-            <div className='points' id='kidsPoints'>
+            {/* <div className='points' id='kidsPoints'>
                 <h4>Youth Race Points</h4>
                 <p>Owen - 10</p>
                 <p>Riggs - 9</p>
                 <p>Colton - 8</p>
                 <p>Ainsley - 7</p>
-            </div>
+            </div> */}
         </div>
     )
 }
