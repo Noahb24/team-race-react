@@ -17,6 +17,7 @@ const initialState = {
     powerPointsList: [],
 	points: {},
 	podcasts: [],
+	drone: [],
 	highlight_podcast: '',
 }
 
@@ -55,6 +56,7 @@ export const selectSandBaggerYear = state => state.home.sandBaggerYear
 export const selectSandBaggerList = state => state.home.sandBaggerList
 export const selectCurrentPoints = state => state.home.points
 export const selectPodcasts = state => state.home.podcasts
+export const selectDrone = state => state.home.drone
 export const selectHighlightPodcast = state => state.home.highlight_podcast
 export const selectPowerPointsList = state => state.home.powerPointsList
 

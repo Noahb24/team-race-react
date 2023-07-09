@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPodcasts, update } from '../home/homeSlice';
+import { selectPodcasts, selectDrone, update } from '../home/homeSlice';
 import { createYoutubeEmbed } from '../logic';
 
 const Podcasts = () => {
@@ -9,6 +9,7 @@ const Podcasts = () => {
 	const url = process.env.NODE_ENV === 'development' ? "http://localhost:5000" : 'https://team-race-server.vercel.app'
 
 	const podcasts = useSelector(selectPodcasts)
+	const drone = useSelector(selectDrone)
 
 	function getPodcastUrls () {
 		axios.get(`${url}/youtube/podcasts`)
@@ -17,18 +18,27 @@ const Podcasts = () => {
 		})
 	}
 
+	function getDroneUrls () {
+		axios.get(`${url}/youtube/drone`)
+		.then(res => {
+			dispatch(update({type: 'drone', value: res.data}))
+		})
+	}
+
 	useEffect(() => {
 		getPodcastUrls()
+		getDroneUrls()
 	}, [])
 
     return (
         <div className='media'>
             <div className='trackFlyover'>
                 <h1 className='header mainHeader'>Track Overview</h1>
-                <div>
-                    <h3 className='header' >Backwoods</h3>
+                <div className='videoScroll'>
 					{
-						createYoutubeEmbed("https://www.youtube.com/embed/KSizGnMjjww")
+						drone.map((link, index) => {
+							return createYoutubeEmbed(link, index)
+						})
 					}
                 </div>
             </div>
@@ -37,7 +47,7 @@ const Podcasts = () => {
                 <div className='videoScroll'>
 					{
 						podcasts.map((link, index) => {
-							return createYoutubeEmbed(link.link, index)
+							return createYoutubeEmbed(link, index)
 						})
 					}
                 </div>
